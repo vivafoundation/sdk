@@ -170,19 +170,19 @@ module.exports = function SDK (opts) {
         var s = toEventTarget(pda.createNetworkActivityStream(this._archive))
 
         s.addEventListener('network-changed', detail =>
-          this.send('network-changed', { target: this, ...detail })
+          this.send('network-changed', Object.assign({target: this}, detail))
         )
 
         s.addEventListener('download', detail =>
-          this.send('download', { target: this, ...detail })
+          this.send('download', Object.assign({target: this}, detail))
         )
 
         s.addEventListener('upload', detail =>
-          this.send('upload', { target: this, ...detail })
+          this.send('upload', Object.assign({target: this}, detail))
         )
 
         s.addEventListener('sync', detail =>
-          this.send('sync', { target: this, ...detail })
+          this.send('sync', Object.assign({target: this}, detail))
         )
       })
     }
