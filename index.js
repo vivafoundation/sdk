@@ -43,9 +43,10 @@ function SDK ({ storageOpts, swarmOpts, driveOpts, coreOpts, dnsOpts } = {}) {
     if (!extensions || !extensions.length) return
     // TODO: This has code smell
     const currentExtensions = swarm._opts.extensions || []
-    const finalSet = new Set([...currentExtensions, ...extensions])
+    const array = currentExtensions.concat(extensions)
+    const finalSet = new Set(array)
 
-    swarm._opts.extensions = [...finalSet]
+    swarm._opts.extensions = Array.from(finalSet)
   }
 
   function destroy (cb) {
