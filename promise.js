@@ -458,6 +458,11 @@ module.exports = function SDK (opts) {
 
       return destDat
     }
+    
+    static async getLocalArchiveURLs () {
+      const urls = listLocal();
+      return urls;
+    }
 
     static async selectArchive (options) {
       const urls = listLocal()
